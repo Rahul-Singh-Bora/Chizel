@@ -161,10 +161,10 @@ export function Hero() {
       </div>
 
       {/* Bottom Gradient Fade for Seamless Transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent via-[#0a0118]/80 to-black pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-linear-to-b from-transparent via-[#0a0118]/80 to-black pointer-events-none z-10" />
 
       {/* Subtle Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none opacity-20" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-size-[40px_40px] pointer-events-none opacity-20" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
