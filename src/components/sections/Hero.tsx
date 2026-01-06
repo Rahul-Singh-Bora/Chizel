@@ -76,7 +76,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-[#0a0118]">
+    <section className="relative min-h-screen bg-black overflow-hidden flex flex-col items-center justify-center text-center px-4 pt-16">
       {/* Noise/Grain Texture Overlay */}
       <div
         className="absolute inset-0 pointer-events-none z-20 opacity-50"
@@ -88,80 +88,7 @@ export function Hero() {
         }}
       />
 
-      {/* Aurora Gradient Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Base Aurora Layer - Large Wave */}
-        <motion.div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 150% 80% at 50% 50%, rgba(99, 102, 241, 0.4) 0%, rgba(168, 85, 247, 0.3) 30%, rgba(236, 72, 153, 0.2) 60%, transparent 100%)",
-            filter: "blur(60px)",
-            mixBlendMode: "screen",
-            willChange: "transform",
-            transform: "translateZ(0)",
-            backfaceVisibility: "hidden",
-          }}
-          animate={{
-            scale: [1, 1.15, 1],
-            x: ["-5%", "5%", "-5%"],
-            y: ["-3%", "3%", "-3%"],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
 
-        {/* Flowing Aurora Waves */}
-        <motion.div
-          className="absolute -top-[20%] -left-[20%] w-[140%] h-[140%]"
-          style={{
-            background:
-              "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(99, 102, 241, 0.5) 60deg, rgba(168, 85, 247, 0.5) 120deg, rgba(236, 72, 153, 0.4) 180deg, rgba(59, 130, 246, 0.5) 240deg, rgba(139, 92, 246, 0.5) 300deg, transparent 360deg)",
-            filter: "blur(80px)",
-            mixBlendMode: "screen",
-            willChange: "transform",
-            transform: "translateZ(0)",
-            backfaceVisibility: "hidden",
-          }}
-          animate={{
-            rotate: [0, 360],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-
-        {/* Secondary Wave Layer */}
-        <motion.div
-          className="absolute top-0 left-0 w-full h-full"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, transparent 30%, rgba(168, 85, 247, 0.3) 50%, transparent 70%, rgba(236, 72, 153, 0.2) 100%)",
-            filter: "blur(70px)",
-            mixBlendMode: "screen",
-            willChange: "transform",
-            transform: "translateZ(0)",
-            backfaceVisibility: "hidden",
-          }}
-          animate={{
-            x: ["-20%", "20%", "-20%"],
-            y: ["-10%", "10%", "-10%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-
-      {/* Bottom Gradient Fade for Seamless Transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-linear-to-b from-transparent via-[#0a0118]/80 to-black pointer-events-none z-10" />
 
       {/* Subtle Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-size-[40px_40px] pointer-events-none opacity-20" />
@@ -203,7 +130,7 @@ export function Hero() {
           </h1>
         </div>
 
-        <h2 className="text-xl md:text-2xl text-gray-300 font-bold tracking-wide max-w-3xl mx-auto pt-4">
+        <h2 className="text-xl md:text-2xl text-gray-300 font-bold-200 tracking-wide max-w-3xl mx-auto pt-4">
           Premium Apps crafted for bold brands.
         </h2>
 
