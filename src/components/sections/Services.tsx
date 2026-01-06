@@ -62,8 +62,14 @@ export function Services() {
             className="py-20 relative overflow-hidden"
             style={{ backgroundColor }}
         >
+            {/* Top separator line */}
+            <motion.div 
+                className="absolute top-0 left-0 right-0 h-0.5"
+                style={{ backgroundColor: borderColor }}
+            />
+
             {/* Animated marquee text at top */}
-            <div className="overflow-hidden whitespace-nowrap mb-20">
+            <div className="overflow-hidden whitespace-nowrap mb-20 relative">
                 <motion.div
                     className="inline-block"
                     animate={{ x: [0, -1000] }}
@@ -74,14 +80,20 @@ export function Services() {
                     }}
                 >
                     <span className="text-[120px] md:text-[200px] font-light tracking-tight">
-                        <span className="text-yellow-400 font-bold opacity-100">©</span>
+                        <motion.span className="font-bold opacity-100" style={{ color: textColor }}>©</motion.span>
                         <motion.span className="opacity-10" style={{ color: textColor }}> services </motion.span>
-                        <span className="text-yellow-400 font-bold opacity-100">©</span>
+                        <motion.span className="font-bold opacity-100" style={{ color: textColor }}>©</motion.span>
                         <motion.span className="opacity-10" style={{ color: textColor }}> services </motion.span>
-                        <span className="text-yellow-400 font-bold opacity-100">©</span>
+                        <motion.span className="font-bold opacity-100" style={{ color: textColor }}>©</motion.span>
                         <motion.span className="opacity-10" style={{ color: textColor }}> services</motion.span>
                     </span>
                 </motion.div>
+                
+                {/* Bottom line for marquee section */}
+                <motion.div 
+                    className="absolute bottom-0 left-0 right-0 h-0.5"
+                    style={{ backgroundColor: borderColor }}
+                />
             </div>
 
             <div className="px-6 md:px-16 relative z-10">
@@ -100,23 +112,30 @@ export function Services() {
                             onMouseLeave={() => setHoveredCategory(null)}
                         >
                             <div className="space-y-10 md:space-y-14">
-                                {/* Category Title with flip animation */}
-                                <motion.div
-                                    style={{ perspective: 1000 }}
-                                    className="overflow-hidden"
-                                >
+                                {/* Category Title with typewriter animation */}
+                                <motion.div className="overflow-hidden">
                                     <motion.h2 
                                         className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight cursor-pointer"
                                         style={{ color: textColor }}
-                                        animate={{
-                                            rotateX: hoveredCategory === category.id ? [0, 360] : 0,
-                                        }}
-                                        transition={{
-                                            duration: 0.6,
-                                            ease: "easeInOut",
-                                        }}
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.3, delay: categoryIndex * 0.1 }}
                                     >
-                                        {category.category}
+                                        {category.category.split("").map((char, charIndex) => (
+                                            <motion.span
+                                                key={charIndex}
+                                                initial={{ opacity: 0 }}
+                                                whileInView={{ opacity: 1 }}
+                                                viewport={{ once: true }}
+                                                transition={{ 
+                                                    duration: 0.1,
+                                                    delay: categoryIndex * 0.2 + charIndex * 0.08
+                                                }}
+                                            >
+                                                {char}
+                                            </motion.span>
+                                        ))}
                                     </motion.h2>
                                 </motion.div>
 
@@ -136,7 +155,7 @@ export function Services() {
                             
                             {/* Animated yellow line overlapping the border at bottom on hover */}
                             <motion.div
-                                className="absolute bottom-0 left-0 h-[2px] bg-yellow-400 z-10"
+                                className="absolute bottom-0 left-0 h-0.5 bg-yellow-500 z-15"
                                 initial={{ width: 0 }}
                                 animate={{ 
                                     width: hoveredCategory === category.id ? "100%" : 0 
