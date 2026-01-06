@@ -18,11 +18,11 @@ export function Navbar() {
     }, []);
 
     const navLinks = [
-        { href: "#", label: "Home" },
-        { href: "#services", label: "Services" },
-        { href: "#process", label: "Process" },
-        { href: "#projects", label: "Works" },
-        { href: "#contact", label: "Contact" },
+        { href: "/", label: "Home" },
+        { href: "/#services", label: "Services" },
+        { href: "/#process", label: "Process" },
+        { href: "/#projects", label: "Works" },
+        { href: "/contact", label: "Contact" },
     ];
 
     return (
@@ -73,7 +73,7 @@ export function Navbar() {
 
                         {/* CTA Button */}
                         <Link
-                            href="#contact"
+                            href="/contact"
                             className="px-6 py-2.5 border border-white/30 rounded-full text-sm text-white hover:bg-white hover:text-black transition-all duration-300 font-normal"
                         >
                             Let's Connect
