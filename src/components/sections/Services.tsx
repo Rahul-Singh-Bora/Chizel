@@ -29,7 +29,7 @@ const serviceCategories = [
 export function Services() {
     const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
     const sectionRef = useRef<HTMLElement>(null);
-    
+
     const { scrollYProgress } = useScroll({
         target: sectionRef,
         offset: ["start end", "end start"]
@@ -57,13 +57,13 @@ export function Services() {
     );
 
     return (
-        <motion.section 
+        <motion.section
             ref={sectionRef}
-            className="py-20 relative overflow-hidden"
+            className="pt-0 pb-20 relative overflow-hidden"
             style={{ backgroundColor }}
         >
             {/* Top separator line */}
-            <motion.div 
+            <motion.div
                 className="absolute top-0 left-0 right-0 h-0.5"
                 style={{ backgroundColor: borderColor }}
             />
@@ -88,9 +88,9 @@ export function Services() {
                         <motion.span className="opacity-10" style={{ color: textColor }}> services</motion.span>
                     </span>
                 </motion.div>
-                
+
                 {/* Bottom line for marquee section */}
-                <motion.div 
+                <motion.div
                     className="absolute bottom-0 left-0 right-0 h-0.5"
                     style={{ backgroundColor: borderColor }}
                 />
@@ -114,7 +114,7 @@ export function Services() {
                             <div className="space-y-10 md:space-y-14">
                                 {/* Category Title with typewriter animation */}
                                 <motion.div className="overflow-hidden">
-                                    <motion.h2 
+                                    <motion.h2
                                         className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight cursor-pointer"
                                         style={{ color: textColor }}
                                         initial={{ opacity: 0 }}
@@ -128,7 +128,7 @@ export function Services() {
                                                 initial={{ opacity: 0 }}
                                                 whileInView={{ opacity: 1 }}
                                                 viewport={{ once: true }}
-                                                transition={{ 
+                                                transition={{
                                                     duration: 0.1,
                                                     delay: categoryIndex * 0.2 + charIndex * 0.08
                                                 }}
@@ -142,8 +142,8 @@ export function Services() {
                                 {/* Service Items */}
                                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-lg md:text-xl">
                                     {category.items.map((item, itemIndex) => (
-                                        <motion.span 
-                                            key={itemIndex} 
+                                        <motion.span
+                                            key={itemIndex}
                                             className="opacity-70 hover:opacity-100 transition-opacity duration-200"
                                             style={{ color: textColor }}
                                         >
@@ -152,13 +152,13 @@ export function Services() {
                                     ))}
                                 </div>
                             </div>
-                            
+
                             {/* Animated yellow line overlapping the border at bottom on hover */}
                             <motion.div
                                 className="absolute bottom-0 left-0 h-0.5 bg-yellow-500 z-15"
                                 initial={{ width: 0 }}
-                                animate={{ 
-                                    width: hoveredCategory === category.id ? "100%" : 0 
+                                animate={{
+                                    width: hoveredCategory === category.id ? "100%" : 0
                                 }}
                                 transition={{ duration: 0.4, ease: "easeInOut" }}
                             />
@@ -167,8 +167,8 @@ export function Services() {
                 </div>
             </div>
 
-         
-           
+
+
         </motion.section>
     );
 }

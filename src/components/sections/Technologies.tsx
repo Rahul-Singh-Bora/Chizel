@@ -40,7 +40,7 @@ const technologies = [
 
 export function Technologies() {
     return (
-        <section className="w-full bg-black py-10 px-4 overflow-hidden relative">
+        <section className="w-full bg-black pb-10 px-4 overflow-hidden relative">
             <div className="max-w-3xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-x-1 gap-y-11 items-center justify-items-center">
                     {technologies.map((tech, index) => (

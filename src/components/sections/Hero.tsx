@@ -16,67 +16,139 @@ export function Hero() {
       size: string;
       duration: number;
       delay: number;
+      opacity: number;
+      blur: string;
     }>
   >([]);
 
   useEffect(() => {
-    // Generate aurora gradient blobs on client side only
-    const colorSets = [
-      [
-        "rgba(99, 102, 241, 0.5)",
-        "rgba(139, 92, 246, 0.5)",
-        "rgba(99, 102, 241, 0.5)",
-      ], // Indigo to Violet
-      [
-        "rgba(168, 85, 247, 0.5)",
-        "rgba(236, 72, 153, 0.5)",
-        "rgba(168, 85, 247, 0.5)",
-      ], // Purple to Pink
-      [
-        "rgba(236, 72, 153, 0.4)",
-        "rgba(59, 130, 246, 0.4)",
-        "rgba(236, 72, 153, 0.4)",
-      ], // Pink to Blue
-      [
-        "rgba(59, 130, 246, 0.5)",
-        "rgba(99, 102, 241, 0.5)",
-        "rgba(59, 130, 246, 0.5)",
-      ], // Blue to Indigo
-      [
-        "rgba(139, 92, 246, 0.5)",
-        "rgba(168, 85, 247, 0.5)",
-        "rgba(139, 92, 246, 0.5)",
-      ], // Violet to Purple
+    // Generate liquid light blobs with vibrant colors
+    const liquidBlobs = [
+      {
+        id: 0,
+        color: '#FF3B3B', // Vibrant Red
+        size: 'w-[700px] h-[700px]',
+        blur: 'blur(100px)',
+        x: [-200, 100, -150, 200, -200],
+        y: [-100, 150, -50, 100, -100],
+        scale: [1, 1.2, 0.9, 1.1, 1],
+        duration: 25,
+        delay: 0,
+        opacity: 0.7,
+      },
+      {
+        id: 1,
+        color: '#1A1F3A', // Dark Navy
+        size: 'w-[900px] h-[900px]',
+        blur: 'blur(120px)',
+        x: [300, -100, 250, -200, 300],
+        y: [100, -150, 200, -100, 100],
+        scale: [1, 1.3, 1, 1.2, 1],
+        duration: 30,
+        delay: 2,
+        opacity: 0.8,
+      },
+      {
+        id: 2,
+        color: '#2E5EFF', // Electric Blue
+        size: 'w-[600px] h-[600px]',
+        blur: 'blur(90px)',
+        x: [-300, 200, -250, 150, -300],
+        y: [200, -100, 150, -150, 200],
+        scale: [1, 1.1, 1.3, 0.9, 1],
+        duration: 22,
+        delay: 4,
+        opacity: 0.6,
+      },
+      {
+        id: 3,
+        color: '#FFD93D', // Golden Yellow
+        size: 'w-[500px] h-[500px]',
+        blur: 'blur(80px)',
+        x: [150, -250, 100, -200, 150],
+        y: [-200, 100, -150, 150, -200],
+        scale: [1, 1.2, 1, 1.3, 1],
+        duration: 20,
+        delay: 1,
+        opacity: 0.65,
+      },
+      {
+        id: 4,
+        color: '#FF3B3B', // Vibrant Red (second blob)
+        size: 'w-[800px] h-[800px]',
+        blur: 'blur(110px)',
+        x: [250, -150, 200, -100, 250],
+        y: [-150, 200, -100, 180, -150],
+        scale: [1, 0.9, 1.2, 1, 1],
+        duration: 28,
+        delay: 3,
+        opacity: 0.7,
+      },
+      {
+        id: 5,
+        color: '#2E5EFF', // Electric Blue (second blob)
+        size: 'w-[750px] h-[750px]',
+        blur: 'blur(95px)',
+        x: [-100, 300, -50, 250, -100],
+        y: [150, -200, 100, -150, 150],
+        scale: [1, 1.1, 1.2, 0.95, 1],
+        duration: 24,
+        delay: 5,
+        opacity: 0.65,
+      },
+      {
+        id: 6,
+        color: '#1A1F3A', // Dark Navy (second blob)
+        size: 'w-[650px] h-[650px]',
+        blur: 'blur(105px)',
+        x: [100, -200, 150, -250, 100],
+        y: [-100, 150, -200, 100, -100],
+        scale: [1, 1.25, 0.95, 1.15, 1],
+        duration: 26,
+        delay: 1.5,
+        opacity: 0.75,
+      },
     ];
 
-    setAuroraBlobs(
-      Array.from({ length: 5 }, (_, i) => ({
-        id: i,
-        color: colorSets[i][0],
-        x: [
-          Math.random() * 600 - 300,
-          Math.random() * 600 - 300,
-          Math.random() * 600 - 300,
-          Math.random() * 600 - 300,
-          Math.random() * 600 - 300,
-        ],
-        y: [
-          Math.random() * 400 - 200,
-          Math.random() * 400 - 200,
-          Math.random() * 400 - 200,
-          Math.random() * 400 - 200,
-          Math.random() * 400 - 200,
-        ],
-        scale: [1, 1.3, 0.9, 1.2, 1],
-        size: i % 2 === 0 ? "w-[800px] h-[800px]" : "w-[700px] h-[700px]",
-        duration: 20 + i * 3,
-        delay: i * 1.5,
-      }))
-    );
+    setAuroraBlobs(liquidBlobs as any);
   }, []);
 
   return (
     <section className="relative min-h-screen bg-black overflow-hidden flex flex-col items-center justify-center text-center px-4 pt-16">
+      {/* Liquid Light Background */}
+      <div
+        className="absolute inset-0 z-0 overflow-hidden"
+        style={{
+          maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+        }}
+      >
+        {auroraBlobs.map((blob) => (
+          <motion.div
+            key={blob.id}
+            className={`absolute ${blob.size} rounded-full`}
+            style={{
+              backgroundColor: blob.color,
+              opacity: blob.opacity,
+              left: '50%',
+              top: '50%',
+              filter: blob.blur,
+            }}
+            animate={{
+              x: blob.x,
+              y: blob.y,
+              scale: blob.scale,
+            }}
+            transition={{
+              duration: blob.duration,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: blob.delay,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Noise/Grain Texture Overlay */}
       <div
         className="absolute inset-0 pointer-events-none z-20 opacity-50"
