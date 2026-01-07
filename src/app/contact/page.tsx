@@ -22,11 +22,11 @@ export default function ContactPage() {
     const mouseY = useMotionValue(0);
     
     const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), {
-        stiffness: 300,
+        stiffness: 90,
         damping: 30
     });
     const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), {
-        stiffness: 300,
+        stiffness: 90,
         damping: 30
     });
 
@@ -35,11 +35,11 @@ export default function ContactPage() {
     const mouseY2 = useMotionValue(0);
     
     const rotateX2 = useSpring(useTransform(mouseY2, [-0.5, 0.5], [10, -10]), {
-        stiffness: 300,
+        stiffness: 90,
         damping: 30
     });
     const rotateY2 = useSpring(useTransform(mouseX2, [-0.5, 0.5], [-10, 10]), {
-        stiffness: 300,
+        stiffness: 90,
         damping: 30
     });
 
@@ -109,7 +109,7 @@ export default function ContactPage() {
                         initial={{ opacity: 0, rotateY: -15 }}
                         animate={{ opacity: 1, rotateY: 0 }}
                         transition={{ 
-                            duration: 0.8,
+                            duration: 2.67,
                             ease: "easeOut"
                         }}
                         style={{
@@ -130,13 +130,13 @@ export default function ContactPage() {
                                     className="space-y-6"
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.3 }}
+                                    transition={{ delay: 1.0 }}
                                 >
                                     <div className="space-y-6">
                                         <motion.div
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.4 }}
+                                            transition={{ delay: 1.33 }}
                                         >
                                             <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
                                                 Name
@@ -148,7 +148,7 @@ export default function ContactPage() {
                                                 value={formData.name}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-300"
+                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000"
                                                 placeholder="Your name"
                                             />
                                         </motion.div>
@@ -156,7 +156,7 @@ export default function ContactPage() {
                                         <motion.div
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.5 }}
+                                            transition={{ delay: 1.67 }}
                                         >
                                             <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
                                                 Email
@@ -168,7 +168,7 @@ export default function ContactPage() {
                                                 value={formData.email}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-300"
+                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000"
                                                 placeholder="your@email.com"
                                             />
                                         </motion.div>
@@ -176,7 +176,7 @@ export default function ContactPage() {
                                         <motion.div
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.6 }}
+                                            transition={{ delay: 2.0 }}
                                         >
                                             <label htmlFor="subject" className="block text-sm font-medium mb-2 text-gray-300">
                                                 Subject
@@ -188,7 +188,7 @@ export default function ContactPage() {
                                                 value={formData.subject}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-300"
+                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000"
                                                 placeholder="Project inquiry"
                                             />
                                         </motion.div>
@@ -196,7 +196,7 @@ export default function ContactPage() {
                                         <motion.div
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.7 }}
+                                            transition={{ delay: 2.33 }}
                                         >
                                             <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
                                                 Message
@@ -208,7 +208,7 @@ export default function ContactPage() {
                                                 onChange={handleChange}
                                                 required
                                                 rows={6}
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-300 resize-none"
+                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000 resize-none"
                                                 placeholder="Tell us about your project..."
                                             />
                                         </motion.div>
@@ -218,10 +218,10 @@ export default function ContactPage() {
                                         type="submit"
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.8 }}
+                                        transition={{ delay: 2.67 }}
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="w-full px-8 py-4 bg-gradient-to-r from-white via-white to-gray-100 text-black font-medium rounded-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden"
+                                        className="w-full px-8 py-4 bg-gradient-to-r from-white via-white to-gray-100 text-black font-medium rounded-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-1000 flex items-center justify-center gap-2 group relative overflow-hidden"
                                     >
                                         <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
                                         <span className="relative z-10">Send Message</span>
@@ -236,9 +236,9 @@ export default function ContactPage() {
                         initial={{ opacity: 0, rotateY: 15 }}
                         animate={{ opacity: 1, rotateY: 0 }}
                         transition={{ 
-                            duration: 0.8,
+                            duration: 2.67,
                             ease: "easeOut",
-                            delay: 0.2
+                            delay: 0.67
                         }}
                         style={{
                             perspective: 1000,
@@ -255,7 +255,7 @@ export default function ContactPage() {
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.5 }}
+                                    transition={{ delay: 1.67 }}
                                 >
                                     <h2 className="text-2xl font-bold mb-6 uppercase tracking-tighter">
                                         Contact Information
@@ -269,9 +269,9 @@ export default function ContactPage() {
                                     <motion.div
                                         initial={{ opacity: 0, x: 20 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.6 }}
+                                        transition={{ delay: 2.0 }}
                                         whileHover={{ x: 5, scale: 1.02 }}
-                                        className="flex items-start gap-4 p-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer group"
+                                        className="flex items-start gap-4 p-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-1000 cursor-pointer group"
                                     >
                                         <div className="p-3 rounded-xl bg-white/10">
                                             <Mail className="w-5 h-5 text-white" />
@@ -290,9 +290,9 @@ export default function ContactPage() {
                                     <motion.div
                                         initial={{ opacity: 0, x: 20 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.7 }}
+                                        transition={{ delay: 2.33 }}
                                         whileHover={{ x: 5, scale: 1.02 }}
-                                        className="flex items-start gap-4 p-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer group"
+                                        className="flex items-start gap-4 p-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-1000 cursor-pointer group"
                                     >
                                         <div className="p-3 rounded-xl bg-white/10">
                                             <Phone className="w-5 h-5 text-white" />
@@ -311,9 +311,9 @@ export default function ContactPage() {
                                     <motion.div
                                         initial={{ opacity: 0, x: 20 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.8 }}
+                                        transition={{ delay: 2.67 }}
                                         whileHover={{ x: 5, scale: 1.02 }}
-                                        className="flex items-start gap-4 p-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer group"
+                                        className="flex items-start gap-4 p-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-1000 cursor-pointer group"
                                     >
                                         <div className="p-3 rounded-xl bg-white/10">
                                             <MapPin className="w-5 h-5 text-white" />
@@ -331,7 +331,7 @@ export default function ContactPage() {
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.9 }}
+                                    transition={{ delay: 3.0 }}
                                     className="pt-8 mt-8 border-t border-white/10"
                                 >
                                     <h3 className="text-lg font-semibold mb-4 uppercase tracking-wide">

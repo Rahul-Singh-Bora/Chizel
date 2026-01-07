@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 
 export function Navbar() {
     const [scrolled, setScrolled] = useState(false);
-    const [isDark, setIsDark] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -22,6 +21,7 @@ export function Navbar() {
         { href: "/#services", label: "Services" },
         { href: "/#process", label: "Process" },
         { href: "/#projects", label: "Works" },
+        { href: "/about", label: "About Us" },
         { href: "/contact", label: "Contact" },
     ];
 
@@ -60,17 +60,8 @@ export function Navbar() {
                         ))}
                     </div>
 
-                    {/* Right Side - Theme Toggle + CTA */}
+                    {/* Right Side - CTA */}
                     <div className="hidden md:flex items-center gap-4">
-                        {/* Theme Toggle */}
-                        <button
-                            onClick={() => setIsDark(!isDark)}
-                            className="flex items-center gap-2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                            aria-label="Toggle theme"
-                        >
-                            <div className={`w-5 h-5 rounded-full transition-colors ${isDark ? 'bg-white' : 'bg-gray-400'}`} />
-                        </button>
-
                         {/* CTA Button */}
                         <Link
                             href="/contact"

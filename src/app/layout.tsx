@@ -35,7 +35,6 @@ export default function RootLayout({
           "font-sans min-h-screen antialiased selection:bg-white/20"
         )}
       >
-        <SmoothScroll />
         <Navbar />
         {children}
       </body>

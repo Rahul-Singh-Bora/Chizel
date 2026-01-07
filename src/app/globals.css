@@ -51,16 +51,97 @@ body {
     overflow-x: hidden;
 }
 
+/* Performance optimized animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInDelay {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+    animation: fadeInDelay 0.5s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+/* Optimized CSS-only blobs */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    pointer-events: none;
+}
+
+.blob-1 {
+    width: 600px;
+    height: 600px;
+    background: #FF3B3B;
+    opacity: 0.4;
+    filter: blur(60px);
+    animation: float 20s ease-in-out infinite;
+}
+
+.blob-2 {
+    width: 700px;
+    height: 700px;
+    background: #1A1F3A;
+    opacity: 0.5;
+    filter: blur(80px);
+    animation: float 25s ease-in-out infinite 2s;
+}
+
+.blob-3 {
+    width: 550px;
+    height: 550px;
+    background: #2E5EFF;
+    opacity: 0.4;
+    filter: blur(70px);
+    animation: float 22s ease-in-out infinite 4s;
+}
+
 /* Minimalist Utilities */
 .glass {
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .glass-card {
     background: black;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    will-change: transform;
 }
 
 .glass-card:hover {
@@ -71,24 +152,4 @@ body {
 /* Premium smooth scrolling */
 html {
     scroll-behavior: smooth;
-}
-
-html.lenis {
-    height: auto;
-}
-
-.lenis.lenis-smooth {
-    scroll-behavior: auto;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-    overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-    pointer-events: none;
 }

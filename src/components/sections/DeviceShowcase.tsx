@@ -46,28 +46,13 @@ export function DeviceShowcase() {
                         src="/mockups/Scene 1.png"
                         alt="Device Mockup Scene"
                         fill
+                        quality={75}
+                        priority={false}
+                        loading="lazy"
                         className="object-contain object-right drop-shadow-2xl"
                     />
-                    {/* Blurred overlay for edges */}
-                    <div 
-                        className="absolute inset-0"
-                        style={{
-                            maskImage: "linear-gradient(to left, transparent 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.7) 85%, black 100%), linear-gradient(to bottom, black 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 20%, transparent 30%, transparent 70%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0.7) 90%, black 100%)",
-                            maskComposite: "add",
-                            WebkitMaskImage: "linear-gradient(to left, transparent 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.7) 85%, black 100%), linear-gradient(to bottom, black 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 20%, transparent 30%, transparent 70%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0.7) 90%, black 100%)",
-                            WebkitMaskComposite: "source-over",
-                            filter: "blur(8px)"
-                        }}
-                    >
-                        <Image
-                            src="/mockups/Scene 1.png"
-                            alt="Device Mockup Scene Blur"
-                            fill
-                            className="object-contain object-right"
-                        />
-                    </div>
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 bg-purple-500/15 blur-3xl -z-10" />
+                    {/* Simplified glow effect */}
+                    <div className="absolute inset-0 bg-purple-500/10 blur-2xl -z-10" />
                 </div>
             </div>
 
@@ -89,10 +74,13 @@ export function DeviceShowcase() {
                             src="/mockups/iMockup - iPhone 15 Pro Max.png"
                             alt="iPhone 17 Pro Max Mockup"
                             fill
+                            quality={75}
+                            priority={false}
+                            loading="lazy"
                             className="object-contain drop-shadow-2xl"
                         />
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 bg-blue-500/20 blur-3xl -z-10 scale-110" />
+                        {/* Simplified glow effect */}
+                        <div className="absolute inset-0 bg-blue-500/15 blur-2xl -z-10" />
                     </div>
                 </motion.div>
             </div>
