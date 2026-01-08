@@ -128,23 +128,23 @@ export default function ContactPage() {
     };
 
     return (
-        <main className="min-h-screen bg-black text-white pt-24 pb-16 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <main className="relative min-h-screen overflow-hidden bg-black pb-16 pt-24 text-white">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-16"
+                    className="mb-16 text-center"
                 >
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tighter">
+                    <h1 className="mb-4 text-4xl font-bold uppercase tracking-tighter md:text-6xl">
                         Get In Touch
                     </h1>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                    <p className="mx-auto max-w-2xl text-lg text-gray-400">
                         Have a project in mind? Let's discuss how we can bring your vision to life.
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-12 items-start">
+                <div className="grid items-start gap-12 md:grid-cols-2">
                     {/* Contact Form with Liquid Glass Effect and Book Animation */}
                     <motion.div
                         ref={cardRef}
@@ -162,27 +162,27 @@ export default function ContactPage() {
                         }}
                         onMouseMove={handleMouseMove}
                         onMouseLeave={handleMouseLeave}
-                        className="relative group"
+                        className="group relative"
                     >
                         {/* Contact Form Card */}
-                        <div className="relative rounded-2xl bg-zinc-900/50 border border-zinc-800 shadow-xl p-8 md:p-10">
+                        <div className="relative rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 shadow-xl md:p-10">
 
                             {isSubmitted ? (
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    className="h-full flex flex-col items-center justify-center text-center py-20 space-y-6"
+                                    className="flex h-full flex-col items-center justify-center space-y-6 py-20 text-center"
                                 >
-                                    <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-4 border border-green-500/20">
-                                        <Send className="w-10 h-10 text-green-500" />
+                                    <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full border border-green-500/20 bg-green-500/10">
+                                        <Send className="h-10 w-10 text-green-500" />
                                     </div>
                                     <h3 className="text-2xl font-bold text-white">Message Sent!</h3>
-                                    <p className="text-gray-400 max-w-sm">
+                                    <p className="max-w-sm text-gray-400">
                                         Thank you for reaching out. We have received your message and will get back to you shortly at {formData.email}.
                                     </p>
                                     <button
                                         onClick={() => setIsSubmitted(false)}
-                                        className="mt-8 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm transition-colors"
+                                        className="mt-8 rounded-full bg-white/10 px-6 py-2 text-sm transition-colors hover:bg-white/20"
                                     >
                                         Send another message
                                     </button>
@@ -201,7 +201,7 @@ export default function ContactPage() {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 1.33 }}
                                         >
-                                            <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
+                                            <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-300">
                                                 Name
                                             </label>
                                             <input
@@ -211,7 +211,7 @@ export default function ContactPage() {
                                                 value={formData.name}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000"
+                                                className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 transition-all duration-1000 focus:border-white/40 focus:bg-white/10 focus:outline-none"
                                                 placeholder="Your name"
                                             />
                                         </motion.div>
@@ -221,7 +221,7 @@ export default function ContactPage() {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 1.67 }}
                                         >
-                                            <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
+                                            <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-300">
                                                 Email
                                             </label>
                                             <input
@@ -231,7 +231,7 @@ export default function ContactPage() {
                                                 value={formData.email}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000"
+                                                className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 transition-all duration-1000 focus:border-white/40 focus:bg-white/10 focus:outline-none"
                                                 placeholder="your@email.com"
                                             />
                                         </motion.div>
@@ -241,7 +241,7 @@ export default function ContactPage() {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 1.8 }}
                                         >
-                                            <label htmlFor="whatsapp" className="block text-sm font-medium mb-2 text-gray-300">
+                                            <label htmlFor="whatsapp" className="mb-2 block text-sm font-medium text-gray-300">
                                                 WhatsApp Number
                                             </label>
                                             <input
@@ -250,7 +250,7 @@ export default function ContactPage() {
                                                 name="whatsapp"
                                                 value={formData.whatsapp}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000"
+                                                className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 transition-all duration-1000 focus:border-white/40 focus:bg-white/10 focus:outline-none"
                                                 placeholder="+1 (555) 000-0000"
                                             />
                                         </motion.div>
@@ -260,7 +260,7 @@ export default function ContactPage() {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 2.0 }}
                                         >
-                                            <label htmlFor="subject" className="block text-sm font-medium mb-2 text-gray-300">
+                                            <label htmlFor="subject" className="mb-2 block text-sm font-medium text-gray-300">
                                                 Subject
                                             </label>
                                             <input
@@ -270,7 +270,7 @@ export default function ContactPage() {
                                                 value={formData.subject}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000"
+                                                className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 transition-all duration-1000 focus:border-white/40 focus:bg-white/10 focus:outline-none"
                                                 placeholder="Project inquiry"
                                             />
                                         </motion.div>
@@ -280,7 +280,7 @@ export default function ContactPage() {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 2.33 }}
                                         >
-                                            <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
+                                            <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-300">
                                                 Message
                                             </label>
                                             <textarea
@@ -290,7 +290,7 @@ export default function ContactPage() {
                                                 onChange={handleChange}
                                                 required
                                                 rows={6}
-                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000 resize-none"
+                                                className="w-full resize-none rounded-xl border border-white/20 bg-white/5 px-4 py-3 transition-all duration-1000 focus:border-white/40 focus:bg-white/10 focus:outline-none"
                                                 placeholder="Tell us about your project..."
                                             />
                                         </motion.div>
@@ -304,9 +304,9 @@ export default function ContactPage() {
                                         transition={{ delay: 2.67 }}
                                         whileHover={{ scale: isSending ? 1 : 1.02 }}
                                         whileTap={{ scale: isSending ? 1 : 0.98 }}
-                                        className={`w-full px-8 py-4 bg-gradient-to-r from-white via-white to-gray-100 text-black font-medium rounded-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-1000 flex items-center justify-center gap-2 group relative overflow-hidden ${isSending ? 'opacity-70 cursor-wait' : ''}`}
+                                        className={`bg-linear-to-r group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl from-white via-white to-gray-100 px-8 py-4 font-medium text-black transition-all duration-1000 hover:shadow-2xl hover:shadow-white/20 ${isSending ? 'cursor-wait opacity-70' : ''}`}
                                     >
-                                        <Send className={`w-5 h-5 relative z-10 ${!isSending && 'group-hover:translate-x-1'} transition-transform`} />
+                                        <Send className={`relative z-10 h-5 w-5 ${!isSending && 'group-hover:translate-x-1'} transition-transform`} />
                                         <span className="relative z-10">{isSending ? "Sending..." : "Send Message"}</span>
                                     </motion.button>
                                 </motion.form>
@@ -334,17 +334,17 @@ export default function ContactPage() {
                         onMouseLeave={handleMouseLeave2}
                         className="space-y-8"
                     >
-                        <div className="relative rounded-2xl bg-zinc-900/50 border border-zinc-800 shadow-xl p-8 md:p-10">
+                        <div className="relative rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 shadow-xl md:p-10">
                             <div>
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 1.67 }}
                                 >
-                                    <h2 className="text-2xl font-bold mb-6 uppercase tracking-tighter">
+                                    <h2 className="mb-6 text-2xl font-bold uppercase tracking-tighter">
                                         Contact Information
                                     </h2>
-                                    <p className="text-gray-400 mb-8">
+                                    <p className="mb-8 text-gray-400">
                                         Feel free to reach out through any of these channels. We typically respond within 24 hours.
                                     </p>
                                 </motion.div>
@@ -355,16 +355,16 @@ export default function ContactPage() {
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 2.0 }}
                                         whileHover={{ x: 5, scale: 1.02 }}
-                                        className="flex items-start gap-4 p-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-1000 cursor-pointer group"
+                                        className="group flex cursor-pointer items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-1000 hover:border-white/20 hover:bg-white/10"
                                     >
-                                        <div className="p-3 rounded-xl bg-white/10">
-                                            <Mail className="w-5 h-5 text-white" />
+                                        <div className="rounded-xl bg-white/10 p-3">
+                                            <Mail className="h-5 w-5 text-white" />
                                         </div>
                                         <div>
-                                            <h3 className="font-semibold mb-1">Email</h3>
+                                            <h3 className="mb-1 font-semibold">Email</h3>
                                             <a
                                                 href="mailto:chizel.dev@gmail.com"
-                                                className="text-gray-400 hover:text-white transition-colors"
+                                                className="text-gray-400 transition-colors hover:text-white"
                                             >
                                                 chizel.dev@gmail.com
                                             </a>
@@ -376,16 +376,16 @@ export default function ContactPage() {
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 2.33 }}
                                         whileHover={{ x: 5, scale: 1.02 }}
-                                        className="flex items-start gap-4 p-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-1000 cursor-pointer group"
+                                        className="group flex cursor-pointer items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-1000 hover:border-white/20 hover:bg-white/10"
                                     >
-                                        <div className="p-3 rounded-xl bg-white/10">
-                                            <Phone className="w-5 h-5 text-white" />
+                                        <div className="rounded-xl bg-white/10 p-3">
+                                            <Phone className="h-5 w-5 text-white" />
                                         </div>
                                         <div>
-                                            <h3 className="font-semibold mb-1">Phone</h3>
+                                            <h3 className="mb-1 font-semibold">Phone</h3>
                                             <a
                                                 href="tel:+91 9635710104 / +91 8218116900"
-                                                className="text-gray-400 hover:text-white transition-colors"
+                                                className="text-gray-400 transition-colors hover:text-white"
                                             >
                                                 +91 9635710104 / +91 8218116900
                                             </a>
@@ -397,13 +397,13 @@ export default function ContactPage() {
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 2.67 }}
                                         whileHover={{ x: 5, scale: 1.02 }}
-                                        className="flex items-start gap-4 p-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-1000 cursor-pointer group"
+                                        className="group flex cursor-pointer items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-1000 hover:border-white/20 hover:bg-white/10"
                                     >
-                                        <div className="p-3 rounded-xl bg-white/10">
-                                            <MapPin className="w-5 h-5 text-white" />
+                                        <div className="rounded-xl bg-white/10 p-3">
+                                            <MapPin className="h-5 w-5 text-white" />
                                         </div>
                                         <div>
-                                            <h3 className="font-semibold mb-1">Location</h3>
+                                            <h3 className="mb-1 font-semibold">Location</h3>
                                             <p className="text-gray-400">
                                                 Working remotely worldwide
                                             </p>
@@ -416,9 +416,9 @@ export default function ContactPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 3.0 }}
-                                    className="pt-8 mt-8 border-t border-white/10"
+                                    className="mt-8 border-t border-white/10 pt-8"
                                 >
-                                    <h3 className="text-lg font-semibold mb-4 uppercase tracking-wide">
+                                    <h3 className="mb-4 text-lg font-semibold uppercase tracking-wide">
                                         Follow Us
                                     </h3>
                                     <div className="flex flex-wrap gap-3">
@@ -426,7 +426,7 @@ export default function ContactPage() {
                                             href="#"
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
-                                            className="px-6 py-2 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full text-sm hover:bg-white hover:text-black transition-all duration-300"
+                                            className="rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-black"
                                         >
                                             Upwork
                                         </motion.a>
@@ -434,7 +434,7 @@ export default function ContactPage() {
                                             href="#"
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
-                                            className="px-6 py-2 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full text-sm hover:bg-white hover:text-black transition-all duration-300"
+                                            className="rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-black"
                                         >
                                             Fiverr
                                         </motion.a>
@@ -442,7 +442,7 @@ export default function ContactPage() {
                                             href="#"
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
-                                            className="px-6 py-2 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full text-sm hover:bg-white hover:text-black transition-all duration-300"
+                                            className="rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-black"
                                         >
                                             LinkedIn
                                         </motion.a>
@@ -458,18 +458,18 @@ export default function ContactPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="text-center mt-16"
+                    className="mt-16 text-center"
                 >
                     <Link
                         href="/"
-                        className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2"
+                        className="inline-flex items-center gap-2 text-gray-400 transition-colors hover:text-white"
                     >
                         <span>←</span> Back to Home
                     </Link>
                 </motion.div>
             </div>
 
-            <footer className="mt-24 text-center text-[10px] text-gray-600 uppercase tracking-[0.2em]">
+            <footer className="mt-24 text-center text-[10px] uppercase tracking-[0.2em] text-gray-600">
                 © {new Date().getFullYear()} Chizel. All rights reserved.
             </footer>
         </main>
