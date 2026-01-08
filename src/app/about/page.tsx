@@ -39,7 +39,7 @@ export default function AboutPage() {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-16"
                     >
-                        <motion.h1 
+                        <motion.h1
                             className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -47,13 +47,13 @@ export default function AboutPage() {
                         >
                             About Chizel
                         </motion.h1>
-                        <motion.p 
+                        <motion.p
                             className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
-                            We are a digital agency focused on crafting beautiful, functional experiences 
+                            We are a digital agency focused on crafting beautiful, functional experiences
                             that help businesses grow and succeed in the modern world.
                         </motion.p>
                     </motion.div>
@@ -68,19 +68,19 @@ export default function AboutPage() {
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Our Story</h2>
                         <div className="space-y-4 text-gray-300 leading-relaxed">
                             <p>
-                                Founded with a vision to bridge the gap between creativity and technology, 
-                                Chizel has grown from a small startup to a trusted partner for businesses 
+                                Founded with a vision to bridge the gap between creativity and technology,
+                                Chizel has grown from a small startup to a trusted partner for businesses
                                 looking to make their mark in the digital world.
                             </p>
                             <p>
-                                We believe that great design isn't just about aesthetics—it's about creating 
-                                meaningful experiences that resonate with users and drive real results. Our 
-                                approach combines strategic thinking with technical expertise to deliver 
+                                We believe that great design isn't just about aesthetics—it's about creating
+                                meaningful experiences that resonate with users and drive real results. Our
+                                approach combines strategic thinking with technical expertise to deliver
                                 solutions that are both beautiful and effective.
                             </p>
                             <p>
-                                Today, we work with clients across various industries, helping them transform 
-                                their digital presence through innovative web development, thoughtful design, 
+                                Today, we work with clients across various industries, helping them transform
+                                their digital presence through innovative web development, thoughtful design,
                                 and strategic consulting.
                             </p>
                         </div>

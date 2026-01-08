@@ -49,14 +49,7 @@ const HeroContent = memo(() => (
       >
         <Link href="#contact">Get in touch</Link>
       </Button>
-      <Button
-        size="lg"
-        variant="outline"
-        className="rounded-full border-white/30 bg-zinc-800/80 text-white backdrop-blur-md hover:bg-zinc-700 transition-all duration-300 text-sm px-10 h-14 font-medium"
-        asChild
-      >
-        <Link href="#projects">See our work</Link>
-      </Button>
+
     </div>
   </div>
 ));
@@ -66,18 +59,7 @@ HeroContent.displayName = 'HeroContent';
 export function Hero() {
   return (
     <section className="relative min-h-screen bg-black overflow-hidden flex flex-col items-center justify-center text-center px-4 pt-16">
-      {/* Optimized CSS-only background blobs */}
-      <div
-        className="absolute inset-0 z-0 overflow-hidden"
-        style={{
-          maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
-        }}
-      >
-        <div className="blob blob-1" />
-        <div className="blob blob-2" />
-        <div className="blob blob-3" />
-      </div>
+
 
       {/* Simplified grain texture */}
       <div

@@ -17,9 +17,11 @@ export function Contact() {
                     <p className="text-gray-400 mb-8 font-light">Let's turn your idea into a reality.</p>
 
                     <div className="space-y-4">
+
+
                         <Button size="lg" className="w-full rounded-none border border-white hover:bg-white hover:text-black transition-all" asChild>
-                            <a href="mailto:hello@chizel.co">
-                                <Mail className="mr-2 w-4 h-4" /> hello@chizel.co
+                            <a href="mailto:chizel.dev@gmail.com">
+                                <Mail className="mr-2 w-4 h-4" /> chizel.dev@gmail.com
                             </a>
                         </Button>
 

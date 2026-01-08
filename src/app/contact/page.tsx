@@ -9,6 +9,7 @@ export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
+        whatsapp: "",
         subject: "",
         message: "",
     });
@@ -16,11 +17,11 @@ export default function ContactPage() {
     const [isFlipping, setIsFlipping] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
     const cardRef2 = useRef<HTMLDivElement>(null);
-    
+
     // First card motion values
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
-    
+
     const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), {
         stiffness: 90,
         damping: 30
@@ -33,7 +34,7 @@ export default function ContactPage() {
     // Second card motion values
     const mouseX2 = useMotionValue(0);
     const mouseY2 = useMotionValue(0);
-    
+
     const rotateX2 = useSpring(useTransform(mouseY2, [-0.5, 0.5], [10, -10]), {
         stiffness: 90,
         damping: 30
@@ -71,11 +72,52 @@ export default function ContactPage() {
         mouseY2.set(0);
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSending, setIsSending] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log("Form submitted:", formData);
-        // You can integrate with your backend or email service here
+        setIsSending(true);
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: "YOUR_ACCESS_KEY_HERE",
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.whatsapp,
+                    subject: `New Contact: ${formData.subject || "Inquiry"}`,
+                    message: `Name: ${formData.name}\nEmail: ${formData.email}\nWhatsApp: ${formData.whatsapp}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`,
+                    to: "chizel.dev@gmail.com"
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setIsSubmitted(true);
+                setFormData({
+                    name: "",
+                    email: "",
+                    whatsapp: "",
+                    subject: "",
+                    message: ""
+                });
+            } else {
+                console.error("Failed to send message:", result);
+                alert("Something went wrong. Please try again or email us directly at chizel.dev@gmail.com");
+            }
+        } catch (error) {
+            console.error("Error sending message:", error);
+            alert("Connection error. Please try again or email us directly at chizel.dev@gmail.com");
+        } finally {
+            setIsSending(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -108,7 +150,7 @@ export default function ContactPage() {
                         ref={cardRef}
                         initial={{ opacity: 0, rotateY: -15 }}
                         animate={{ opacity: 1, rotateY: 0 }}
-                        transition={{ 
+                        transition={{
                             duration: 2.67,
                             ease: "easeOut"
                         }}
@@ -124,9 +166,30 @@ export default function ContactPage() {
                     >
                         {/* Contact Form Card */}
                         <div className="relative rounded-2xl bg-zinc-900/50 border border-zinc-800 shadow-xl p-8 md:p-10">
-                                
-                                <motion.form 
-                                    onSubmit={handleSubmit} 
+
+                            {isSubmitted ? (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="h-full flex flex-col items-center justify-center text-center py-20 space-y-6"
+                                >
+                                    <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-4 border border-green-500/20">
+                                        <Send className="w-10 h-10 text-green-500" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-white">Message Sent!</h3>
+                                    <p className="text-gray-400 max-w-sm">
+                                        Thank you for reaching out. We have received your message and will get back to you shortly at {formData.email}.
+                                    </p>
+                                    <button
+                                        onClick={() => setIsSubmitted(false)}
+                                        className="mt-8 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm transition-colors"
+                                    >
+                                        Send another message
+                                    </button>
+                                </motion.div>
+                            ) : (
+                                <motion.form
+                                    onSubmit={handleSubmit}
                                     className="space-y-6"
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
@@ -176,6 +239,25 @@ export default function ContactPage() {
                                         <motion.div
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 1.8 }}
+                                        >
+                                            <label htmlFor="whatsapp" className="block text-sm font-medium mb-2 text-gray-300">
+                                                WhatsApp Number
+                                            </label>
+                                            <input
+                                                type="tel"
+                                                id="whatsapp"
+                                                name="whatsapp"
+                                                value={formData.whatsapp}
+                                                onChange={handleChange}
+                                                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-1000"
+                                                placeholder="+1 (555) 000-0000"
+                                            />
+                                        </motion.div>
+
+                                        <motion.div
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 2.0 }}
                                         >
                                             <label htmlFor="subject" className="block text-sm font-medium mb-2 text-gray-300">
@@ -216,17 +298,19 @@ export default function ContactPage() {
 
                                     <motion.button
                                         type="submit"
+                                        disabled={isSending}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 2.67 }}
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        className="w-full px-8 py-4 bg-gradient-to-r from-white via-white to-gray-100 text-black font-medium rounded-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-1000 flex items-center justify-center gap-2 group relative overflow-hidden"
+                                        whileHover={{ scale: isSending ? 1 : 1.02 }}
+                                        whileTap={{ scale: isSending ? 1 : 0.98 }}
+                                        className={`w-full px-8 py-4 bg-gradient-to-r from-white via-white to-gray-100 text-black font-medium rounded-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-1000 flex items-center justify-center gap-2 group relative overflow-hidden ${isSending ? 'opacity-70 cursor-wait' : ''}`}
                                     >
-                                        <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-                                        <span className="relative z-10">Send Message</span>
+                                        <Send className={`w-5 h-5 relative z-10 ${!isSending && 'group-hover:translate-x-1'} transition-transform`} />
+                                        <span className="relative z-10">{isSending ? "Sending..." : "Send Message"}</span>
                                     </motion.button>
                                 </motion.form>
+                            )}
                         </div>
                     </motion.div>
 
@@ -235,7 +319,7 @@ export default function ContactPage() {
                         ref={cardRef2}
                         initial={{ opacity: 0, rotateY: 15 }}
                         animate={{ opacity: 1, rotateY: 0 }}
-                        transition={{ 
+                        transition={{
                             duration: 2.67,
                             ease: "easeOut",
                             delay: 0.67
@@ -279,10 +363,10 @@ export default function ContactPage() {
                                         <div>
                                             <h3 className="font-semibold mb-1">Email</h3>
                                             <a
-                                                href="mailto:hello@chizel.co"
+                                                href="mailto:chizel.dev@gmail.com"
                                                 className="text-gray-400 hover:text-white transition-colors"
                                             >
-                                                hello@chizel.co
+                                                chizel.dev@gmail.com
                                             </a>
                                         </div>
                                     </motion.div>

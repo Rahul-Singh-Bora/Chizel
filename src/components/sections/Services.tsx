@@ -58,6 +58,7 @@ export function Services() {
 
     return (
         <motion.section
+            id="services"
             ref={sectionRef}
             className="pt-0 pb-20 relative overflow-hidden"
             style={{ backgroundColor }}
