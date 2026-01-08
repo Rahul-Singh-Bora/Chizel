@@ -47,7 +47,7 @@ const HeroContent = memo(() => (
         className="rounded-full border border-white/40 bg-white text-black hover:bg-white/90 transition-all duration-300 text-sm px-10 h-14 font-medium"
         asChild
       >
-        <Link href="#contact">Get in touch</Link>
+        <Link href="/contact">Get in touch</Link>
       </Button>
 
     </div>
