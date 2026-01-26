@@ -1,42 +1,47 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Contact() {
     return (
-        <section id="contact" className="py-24 px-4 relative overflow-hidden bg-black">
-            <div className="max-w-md mx-auto text-center space-y-8">
+        <section id="contact" className="relative overflow-hidden bg-black px-4 py-24">
+            <div className="mx-auto max-w-md space-y-8 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-3xl font-heading font-bold mb-4 uppercase tracking-tighter">Ready to build?</h2>
-                    <p className="text-gray-400 mb-8 font-light">Let's turn your idea into a reality.</p>
+                    <h2 className="font-heading mb-4 text-3xl font-bold uppercase tracking-tighter">Ready to build?</h2>
+                    <p className="mb-8 font-light text-gray-400">Let's turn your idea into a reality.</p>
 
                     <div className="space-y-4">
 
 
-                        <Button size="lg" className="w-full rounded-none border border-white hover:bg-white hover:text-black transition-all" asChild>
+                        <Button size="lg" className="w-full rounded-none border border-white transition-all hover:bg-white hover:text-black" asChild>
                             <a href="mailto:chizel.dev@gmail.com">
-                                <Mail className="mr-2 w-4 h-4" /> chizel.dev@gmail.com
+                                <Mail className="mr-2 h-4 w-4" /> chizel.dev@gmail.com
                             </a>
                         </Button>
 
-                        <p className="text-xs text-gray-500 pt-2 tracking-widest uppercase">Typically responds within 24 hours.</p>
+                        <p className="pt-2 text-xs uppercase tracking-widest text-gray-500">Typically responds within 24 hours.</p>
                     </div>
 
-                    <div className="flex justify-center gap-6 mt-12 text-sm text-gray-400 uppercase tracking-widest">
-                        <a href="#" className="hover:text-white transition-colors border-b border-transparent hover:border-white">Upwork</a>
-                        <a href="#" className="hover:text-white transition-colors border-b border-transparent hover:border-white">Fiverr</a>
-                        <a href="#" className="hover:text-white transition-colors border-b border-transparent hover:border-white">LinkedIn</a>
+                    <div className="mt-12 flex justify-center gap-6 text-sm uppercase tracking-widest text-gray-400">
+                        <a href="https://www.linkedin.com/company/chizel-dev/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border-b border-transparent transition-colors hover:border-white hover:text-white">
+                            <Linkedin className="h-4 w-4" />
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/Rahul-Singh-Bora" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border-b border-transparent transition-colors hover:border-white hover:text-white">
+                            <Github className="h-4 w-4" />
+                            GitHub
+                        </a>
                     </div>
                 </motion.div>
             </div>
 
-            <footer className="mt-24 text-center text-[10px] text-gray-600 uppercase tracking-[0.2em]">
+            <footer className="mt-24 text-center text-[10px] uppercase tracking-[0.2em] text-gray-600">
                 © {new Date().getFullYear()} Chizel. All rights reserved.
             </footer>
         </section>

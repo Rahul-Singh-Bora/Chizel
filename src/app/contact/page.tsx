@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Linkedin, Github } from "lucide-react";
 import Link from "next/link";
 import { useState, useRef } from "react";
 
@@ -423,28 +423,26 @@ export default function ContactPage() {
                                     </h3>
                                     <div className="flex flex-wrap gap-3">
                                         <motion.a
-                                            href="#"
+                                            href="https://www.linkedin.com/company/chizel-dev/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
-                                            className="rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-black"
+                                            className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-black"
                                         >
-                                            Upwork
-                                        </motion.a>
-                                        <motion.a
-                                            href="#"
-                                            whileHover={{ scale: 1.05, y: -2 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-black"
-                                        >
-                                            Fiverr
-                                        </motion.a>
-                                        <motion.a
-                                            href="#"
-                                            whileHover={{ scale: 1.05, y: -2 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-black"
-                                        >
+                                            <Linkedin className="h-4 w-4" />
                                             LinkedIn
+                                        </motion.a>
+                                        <motion.a
+                                            href="https://github.com/Rahul-Singh-Bora"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            whileHover={{ scale: 1.05, y: -2 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-black"
+                                        >
+                                            <Github className="h-4 w-4" />
+                                            GitHub
                                         </motion.a>
                                     </div>
                                 </motion.div>
